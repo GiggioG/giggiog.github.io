@@ -87,6 +87,9 @@ nav:hover li#logo a img {
         justify-content: center;
         width:80px;
     }
+    nav ul li#logo a{
+        background-color: var(--col-bg-dark);
+    }
     nav ul li{
         height:100%;
         margin:0 10px;;
