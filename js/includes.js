@@ -8,5 +8,6 @@ data.forEach(element => {
 includes.forEach(async i=>{
     let raw = await fetch(i[1]);
     let text = await raw.text();
-    document.querySelector(`i.incl-${i[0]}`).outerHTML = text;
-})
+    let remove = document.querySelector(`i.incl-${i[0]}`)
+    remove.forEach(r=>r.outerHTML = text);
+}) 
