@@ -6,5 +6,5 @@ data.forEach(element => {
 includes.forEach(async i=>{
     let raw = await fetch(i[1]);
     let text = await raw.text();
-    document.getElementById(i[0]).outerHTML = text;
+    document.querySelector(`i#${i[0]}`).outerHTML = text;
 })
