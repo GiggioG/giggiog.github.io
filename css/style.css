@@ -1,9 +1,12 @@
 :root {
     --col-bg: rgb(218, 251, 250);
     --col-bg-dark: rgb(158, 211, 210);
+    --col-bg-darker: rgb(138, 191, 190);
     --col-1: rgb(44, 39, 173);
     --col-2: rgb(172, 12, 12);
     --col-3: rgb(175, 143, 0);
+    --col-logo: rgb(116, 209, 76);
+    --transition-speed: 600ms;
 }
 body {
     background-color: var(--col-bg);
@@ -13,22 +16,17 @@ body {
 body::-webkit-scrollbar{
     width: 10px;
 }
-body::-webkit-scrollbar-track {
-    background: var(--col-bg);
-}
 body::-webkit-scrollbar-thumb {
-    background: var(--col-bg-dark);
+    background: var(--col-bg-darker);
 }
 main {
     margin-left: 80px;
     padding: 16px;
 }
 nav {
-    width:80px;
-    height:100vh;
     position:fixed;
     background-color:var(--col-bg-dark);
-    transition: width 200ms ease;
+    transition: width var(--transition-speed) ease;
 }
 nav ul {
     list-style: none;
@@ -38,34 +36,87 @@ nav ul {
     flex-direction: column;
     align-items: center;
 }
-nav ul li{
-    width:100%;
-    margin:auto;
-}
 nav ul li a{
     display:flex;
     align-items: center;
     height: 80px;
     text-decoration: none;
     color: var(--col-2);
-    transition: 600ms;
+    background-color: var(--col-bg-dark);
+    transition: var(--transition-speed);
 }
 nav ul li a span{
     display: none;
     margin-left: 16px;
 }
-nav ul li a svg{
+nav ul li a svg,img{
     min-width: 30px;
+    max-height: 30px;;
     margin: 0px 24px;
 }
 nav ul li:hover a{
     color: var(--col-1);
+    background-color: var(--col-bg-darker);
 }
-nav:hover{
-    width:256px;
+nav li#logo a{
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    text-align: center;
+    background-color: var(--col-bg-darker);
+    font-size: 24px;
+    letter-spacing: 0.3ch;
 }
-nav:hover ul li a span{
-    display:block;
+nav li#logo a img{
+    transform:rotate(0deg);
+    transition: transform var(--transition-speed);
+}
+nav:hover li#logo a img {
+    transform: rotate(360deg);
+}
+@media only screen and (max-width:599px){
+    nav{
+        bottom:0px;
+        width:100vh;
+        height:80px;
+    }
+    nav ul{
+        flex-direction: row;
+    }
+    nav ul li a {
+        justify-content: center;
+        width:80px;
+    }
+    nav ul li{
+        height:100%;
+        margin:0 10px;;
+        width:80px;
+    }
+    main{
+        margin:0px;
+    }
+    body::-webkit-scrollbar-track {
+        background: var(--col-bg-dark);
+    }
+}
+@media only screen and (min-width:600px){
+    nav{
+        width:80px;
+        height:100vh;
+    }
+    nav:hover{
+        width:256px;
+    }
+    nav:hover ul li a span{
+        display:block;
+    }
+    body::-webkit-scrollbar-track {
+        background: var(--col-bg);
+    }
+    nav ul li{
+        width:100%;
+        margin:auto;
+    }
 }
 .primary-text {
     color: var(--col-1);
