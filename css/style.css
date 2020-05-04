@@ -127,6 +127,10 @@ nav li#logo a img{
         transform: rotate(360deg);
     }
 }
+ul.memes-ul li img {
+    max-width:90%;
+    height: auto;
+}
 .primary-text {
     color: var(--col-1);
     font-family: 'Anton' , sans-serif;
