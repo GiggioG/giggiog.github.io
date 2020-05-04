@@ -1,4 +1,6 @@
-let data = document.getElementById("includes.js").attributes["data-includes"].value.split("|");
+let data = document.querySelector("script[src=\"./js/includes.js\"]")
+    .attributes["data-includes"].value
+    .split("|");
 let includes = [];
 data.forEach(element => {
     includes.push(element.split(","));
