@@ -1,0 +1,24 @@
+body {
+    background-color: rgb(218, 251, 250);
+}
+.primary-text {
+    color: rgb(44, 39, 173);
+    font-family: 'Anton' , sans-serif;
+}
+.secondary-text {
+    color: rgb(172, 12, 12);
+    font-family: 'Teko', sans-serif;
+}
+.tertiary-text {
+    color: rgb(175, 143, 0);
+    font-family: 'Lobster', cursive;
+}
+#logo {
+    width: 100%;
+}
+.content-paragraph{
+    font-family: 'Dosis', sans-serif;
+}
+ul{
+    list-style:square;
+}
