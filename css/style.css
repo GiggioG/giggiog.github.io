@@ -67,9 +67,6 @@ nav li#logo a img{
     transform:rotate(0deg);
     transition: transform var(--transition-speed);
 }
-nav:hover li#logo a img {
-    transform: rotate(360deg);
-}
 @media only screen and (max-width:599px){
     nav{
         bottom:0px;
@@ -119,6 +116,9 @@ nav:hover li#logo a img {
     nav ul li:hover a{
         color: var(--col-1);
         background-color: var(--col-bg-darker);
+    }
+    nav:hover li#logo a img {
+        transform: rotate(360deg);
     }
 }
 .primary-text {
