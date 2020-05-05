@@ -83,7 +83,6 @@ nav li#logo a img{
     }
     nav ul li a {
         justify-content: center;
-        /*width:80px;*/
     }
     nav ul li#logo a{
         background-color: var(--col-bg-dark);
@@ -91,8 +90,7 @@ nav li#logo a img{
     }
     nav ul li{
         height:100%;
-        margin:0 16px;;
-        width:80px;
+        margin:0px;
     }
     main{
         margin:0px;
