@@ -91,6 +91,7 @@ nav li#logo a img{
     nav ul li{
         height:100%;
         margin:0px;
+        width:min-content;
     }
     main{
         margin:0px;
