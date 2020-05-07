@@ -68,7 +68,7 @@
                     idx = i;
                 }
             });
-            out(programa[idx].end, `Time untill end of ${programa[idx].name}.`, (programa[idx].name=="break"?true:false));
+            out(programa[idx].end-time, `Time untill end of ${programa[idx].name}.`, (programa[idx].name=="break"?true:false));
         }, 300)
         let out = (sec, title, green) => {
             etitle.innerHTML = title;
