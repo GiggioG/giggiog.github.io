@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/ad53433535.js" crossorigin="anonymous"></script>
     <script src="./js/includes.js"
-        data-includes="navbar,./includes/nav.html|fonts,./includes/fonts.html|byme,./includes/meme_by_me.html"></script>
+        data-includes="navbar,./includes/nav.html|fonts,./includes/fonts.html"></script>
 </head>
 
 <body>
@@ -21,6 +21,7 @@
         <h2 class="secondary-text" id="time"></h2>
     </main>
     <script>
+        let bell = new Audio("http://www.orangefreesounds.com/wp-content/uploads/2020/02/Beep-pressing-buttons.mp3");
         class Event{
             constructor(beg,end,name){
                 this.beg=beg;
@@ -80,6 +81,12 @@
             sec %= 60;
             let seconds = sec;
             etime.innerHTML = `${day}:${hour}:${minutes}:${seconds}`;
+            if((document.body.style.backgroundColor == "lightsalmon") && (green == true)){
+                bell.play();
+            }
+            if((document.body.style.backgroundColor == "lightgreen") && (green == false)){
+                bell.play();
+            }
             if(green){
                 document.body.style.backgroundColor = "lightgreen";
             }else{
