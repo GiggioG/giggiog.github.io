@@ -16,7 +16,67 @@
 
 <body>
     <i class="incl-navbar"></i>
-    
+    <main>
+        <h1 class="primary-text">Text tools</h1>
+        <ul>
+            <li>
+                <h2 class="secondary-text">Shliokavitsa ( {lxokawica ) </h2>
+                <p class="content-paragraph">
+                    Shliokavitsa or Шльокавица is when someone writes in cyrillic, but they<br>
+                    forgot to change to cyrillic keyboard.
+                </p>
+                <input type="text" id="shliokavitsa-ipt" placeholder="Enter cyrillic text here...">
+                <button id="shliokavitsa-btn">Convert</button>
+                <p class="content-paragraph" id="shliokavitsa-res"></p>
+            </li>
+            <li>
+                <h2 class="secondary-text">Wierd Bulgarian</h2>
+                <p class="content-paragraph">
+                    Wierd bulgarian is basicly the cyrillic alphabet, but the symbols are replaced<br>
+                    with similar sounding or looking letters.
+                </p>
+                <input type="text" id="wierdbg-ipt" placeholder="Enter bulgarian text here...">
+                <button id="wierdbg-btn">Convert</button>
+                <p class="content-paragraph" id="wierdbg-res"></p>
+            </li>
+        </ul>
+    </main>
+    <script>
+        function shliokavitsa(cyrillic){
+            let alpha = [
+                "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЮЯабвгдежзийклмнопрстуфхцчшщъьюя",
+                "ABWGDEVZIJKLMNOPRSTUFHC~{}YX|Qabwgdevzijklmnoprstufhc`[]yx\\q"
+            ];
+            cyrillic.split("").forEach(lett=>{
+                if(alpha[0].indexOf(lett) != -1){
+                    document.querySelector("#shliokavitsa-res").innerHTML += alpha[1][alpha[0].indexOf(lett)];
+                }else{
+                    document.querySelector("#shliokavitsa-res").innerHTML += lett;
+                }
+            });
+        }
+        function wierdbg(bg){
+            let alpha = [
+                "абвгдежзийклмнопрстуфхцчшщъьюяАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЮЯ",
+                ["α","b","β","g","δ","ε","j","ʒ","i","y","c","λ","μ","n","ω","p","г","σ","t","γ","ƒ","h","t͡σ","t͡ʃ","ʃ","ʃ͡t","u","ъ","y͡γ","y͡α","Α","B","Β","G","D","E","J","ʒ","I","Y","C","Λ","M","N","Ω","P","Г","Σ","T","Γ","Ƒ","H","T͡Σ","T͡Ʃ","ʃ","Ʃ͡T","U","Ъ","Y͡Γ","Y͡Α"]
+            ];
+            bg.split("").forEach(lett=>{
+                if(alpha[0].indexOf(lett) != -1){
+                    document.querySelector("#wierdbg-res").innerHTML += alpha[1][alpha[0].indexOf(lett)];
+                }else{
+                    document.querySelector("#wierdbg-res").innerHTML += lett;
+                }
+            });
+        }
+        document.querySelector("#shliokavitsa-btn").addEventListener("click",_=>{
+            document.querySelector("#shliokavitsa-res").innerHTML = "";
+            shliokavitsa(document.querySelector("#shliokavitsa-ipt").value);
+        })
+        document.querySelector("#wierdbg-btn").addEventListener("click",_=>{
+            document.querySelector("#wierdbg-res").innerHTML = "";
+            wierdbg(document.querySelector("#wierdbg-ipt").value);
+        })
+    </script>
 </body>
 
 </html>
