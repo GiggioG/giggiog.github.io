@@ -163,3 +163,15 @@ ul.contacts-ul li a{
 main ul{
     list-style:square;
 }
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    text-align: left;
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 8px;
+    background-color: var(--col-bg-dark);
+}
+tr:nth-child(even) {background-color: var(--col-bg-darker);}
