@@ -6,12 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The bell</title>
-    <link href="./img/logo.png" rel="shortcut icon">
+    <link href="./res/img/logo.png" rel="shortcut icon">
     <i class="incl-fonts"></i>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./res/css/style.css">
     <script src="https://kit.fontawesome.com/ad53433535.js" crossorigin="anonymous"></script>
-    <script src="./js/includes.js"
-        data-includes="navbar,./includes/nav.html|fonts,./includes/fonts.html"></script>
+    <script src="./res/js/includes.js"
+        data-includes="navbar,./res/includes/nav.html|fonts,./res/includes/fonts.html"></script>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
         <h2 class="secondary-text" id="time"></h2>
     </main>
     <script>
-        let bell = new Audio("./audio/bell.mp3");
+        let bell = new Audio("./res/audio/bell.mp3");
         class Event{
             constructor(beg,end,name){
                 this.beg=beg;
