@@ -1,4 +1,4 @@
-let data = document.querySelector("script[src=\"./js/includes.js\"]")
+let data = document.querySelector("script[src=\"./res/js/includes.js\"]")
     .attributes["data-includes"].value
     .split("|");
 let includes = [];
