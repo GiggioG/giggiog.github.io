@@ -132,7 +132,7 @@ ul.memes-ul li img {
     max-height:90vh;
     height: auto;
 }
-ul.contacts-ul li {
+ul.contacts-ul div, ul.contacts-ul li {
     height: 50px;
     width: 90%;
     display:flex;
@@ -141,7 +141,7 @@ ul.contacts-ul li {
     margin: 10px;
     padding: 1px;
 }
-ul.contacts-ul li a{
+ul.contacts-ul div a{
     color:var(--col-bg);
     text-decoration: none;
 }
