@@ -4,15 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?php if(isset($_GET["ttl"])){echo $_GET["ttl"];}else{echo "ЧРД Ея!";} ?></title>
-    <style>
-        .txt{
-            color:<?php if(isset($_GET["txt"])){echo $_GET["txt"];}else{echo "black";} ?>
-        }
-        *{
-            background-color:<?php if(isset($_GET["bkg"])){echo $_GET["bkg"];}else{echo "white";} ?>
-        }
-    </style>
+    <title>ЧРД Ея!</title>
 </head>
 <body>
     <h1 class="txt">ЧРД Ея!</h1>
@@ -43,5 +35,27 @@
     <br>
     <br>
     <button class="txt" onclick="alert('нещо')">Бутон</button>
+    <script>
+        let qps = {};
+
+        try{
+            let qpsArray = location.href.split("?")[1].split("&");
+            qpsArray = qpsArray.map(e=>e.split("="));
+            qpsArray.forEach(p=>qps[p[0]]=p[1]);
+        }catch(e){
+            console.log(`probably no query parameters: ${e}`);
+        }
+
+        document.title = qps["ttl"] || "ЧРД Ея!";
+
+        for(txt of document.getElementsByClassName("txt")){
+            txt.style.color =  qps["txt"] || "black";
+        }
+
+        for(bkg of document.body.querySelectorAll("*")){
+            bkg.style.backgroundColor =  qps["bkg"] || "white";
+        }
+        document.body.style.backgroundColor = qps["bkg"] || "white";
+    </script>
 </body>
 </html>

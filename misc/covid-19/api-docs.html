@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CoViD-19 BG API Документация</title>
+        <link rel="shortcut icon" href="./covi.png" type="image/x-icon" />
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <h1>Документация за API на CoViD-19 BG</h1>
+        <h2>Детеайли за връзката</h2>
+        <pre>
+URL: https://giggiog.github.io/misc/covid-19/data.json
+Content-Type: application/json
+        </pre>
+        <h2>Структура на данните(Пример от 11.3.2020г.)</h2>
+        <pre>
+{
+    "cities": [
+        { "name": "Габрово", "cases": 2, "sick": 2, "healed": 0, "deaths": 0 },
+        { "name": "Плевен",  "cases": 2, "sick": 2, "healed": 0, "deaths": 0 },
+        { "name": "София",   "cases": 3, "sick": 2, "healed": 0, "deaths": 1 }
+    ],
+    "total": {"cases": 7, "sick": 6, "healed": 0, "deaths": 1 },
+    "updatedate":"11.3.2020"
+}            
+        </pre>
+        <br />
+        <br />
+        <br />
+        <p id="credits">
+            Този сайт е направен от <a href="./contact.html">Gigo_G</a><br />
+            <a href="./index.html">Главният сайт</a>
+        </p>
+    </body>
+</html>

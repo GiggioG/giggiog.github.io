@@ -1,0 +1,11 @@
+{
+    "cities": [
+        { "name": "Габрово", "cases": 2, "sick": 2, "healed": 0, "deaths": 0 },
+        { "name": "Плевен",  "cases": 3, "sick": 3, "healed": 0, "deaths": 0 },
+        { "name": "София",   "cases": 45, "sick": 43, "healed": 0, "deaths": 2 },
+        { "name": "Благоевград",   "cases": 2, "sick": 2, "healed": 0, "deaths": 0 },
+        { "name": "Варна",   "cases": 1, "sick": 1, "healed": 0, "deaths": 0 }
+    ],
+    "total": {"cases": 53, "sick": 51, "healed": 0, "deaths": 2 },
+    "updatedate":"15.3.2020"
+}

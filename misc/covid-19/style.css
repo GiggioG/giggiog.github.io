@@ -1,0 +1,43 @@
+body {
+    background-image: url(./covi.png);
+    margin: 0px;
+    padding: 0px;
+}
+table,
+th,
+td {
+    border: 1px solid rgb(77, 77, 77);
+    border-collapse: collapse;
+}
+table tr th {
+    color: black;
+}
+table tr td {
+    color: rgb(34, 34, 34);
+}
+tr:nth-child(even) {
+    background-color: rgb(200, 200, 200);
+}
+table {
+    width: 100%;
+}
+body * {
+    margin: auto;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+span {
+    background-color: rgba(0, 0, 0, 0);
+}
+#credits {
+    font-size: smaller;
+    color: rgb(100, 100, 100);
+}
+a {
+    color: rgb(100, 100, 175);
+    text-decoration: none;
+}
+a:hover {
+    color: rgb(0, 0, 255);
+    text-decoration: underline;
+}

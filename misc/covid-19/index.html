@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CoViD-19 BG</title>
+        <link rel="shortcut icon" href="./covi.png" type="image/x-icon" />
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <h1>Данни за коронавирус (CoViD-19) в България</h1>
+        <h3>По градове</h3>
+        <table id="table-cities">
+            <tr>
+                <th>Град</th>
+                <th>Случаи</th>
+                <th>Болни</th>
+                <th>Оздравели</th>
+                <th>Смъртни случаи</th>
+            </tr>
+        </table>
+        <p id="updatedate"></p>
+        <br />
+        <br />
+        <br />
+        <p id="credits">
+            Този сайт е направен от <a href="./contact.html">Gigo_G</a><br />
+            <a href="./api-docs.html">Документация относно API</a>
+        </p>
+        <script>
+            fetch("./data.json")
+                .then(r => r.json())
+                .then(data => {
+                    data.cities.forEach(city => {
+                        let tr = document.createElement("tr");
+                        tr.innerHTML = `<td>${city.name}</td><td>${city.cases}</td><td>${city.sick}</td><td>${city.healed}</td><td>${city.deaths}</td>`;
+                        document.querySelector("#table-cities").appendChild(tr);
+                    });
+                    let tr = document.createElement("tr");
+                    tr.innerHTML = `<td>Общо</td><td>${data.total.cases}</td><td>${data.total.sick}</td><td>${data.total.healed}</td><td>${data.total.deaths}</td>`;
+                    document.querySelector("#table-cities").appendChild(tr);
+                    document.querySelector("#updatedate").innerHTML = `Последно обновено на ${data.updatedate}г.`;
+                });
+        </script>
+    </body>
+</html>
