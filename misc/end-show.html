@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шоу програма</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #faffe8;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #b7fff3;
+        }
+
+        table th {
+            background-color: #b7fff3;
+        }
+    </style>
+</head>
+<body>
+    <form method="get">
+        <label>Изпълнител ,ред, какво ще прави или допълнителна информация:</label>
+        <input type="text" name="q" required="true" id="text" autocomplete="off"><br>
+        <label>За какво ще търсите:</label>
+        <select name="qt" required="true" id="select">
+            <option value="red">Ред</option>
+            <option value="izpulnitel">Изпълнител</option>
+            <option value="kakvo">Какво ще прави</option>
+            <option value="info">Допълнителна информация</option>
+        </select>
+        <button type="submit" name="submit" value="submit">Търси</button>
+    </form>
+    <button onclick="window.location.href = window.location.href.split('?')[0];">Изчисти търсенето</button>
+    <br>
+    <script>
+        let db = [
+        {
+                "red": "1",
+                "izpulnitel": "Теди и Ани",
+                "kakvo": "четат стихче",
+                "info": "стихче: Сбогуване"
+            },
+            {
+                "red": "2",
+                "izpulnitel": "Рая Аб. и Дими",
+                "kakvo": "танцуват",
+                "info": "песен: Little Mix - Power"
+            },
+            {
+                "red": "3",
+                "izpulnitel": "Йоан Дж.",
+                "kakvo": "фокус",
+                "info": "Изненада за зрителите и за изпълнителите<br>(Дори и ние не знаем какъв)"
+            },
+            {
+                "red": "4",
+                "izpulnitel": "Калина, Марина",
+                "kakvo": "гатанки",
+                "info": "12 забавни гатанки"
+            },
+            {
+                "red": "5",
+                "izpulnitel": "Изи и Нати",
+                "kakvo": "танцуват",
+                "info": "песен: Billie Eilish - You should see me in a crown"
+            },
+            {
+                "red": "6",
+                "izpulnitel": "Ани",
+                "kakvo": "пее",
+                "info": "песен: Zaz - Sous le ciel de Paris"
+            },
+            {
+                "red": "7",
+                "izpulnitel": "Йоан В., Йоан Ч., Боби",
+                "kakvo": "вицове",
+                "info": "липсва"
+            },
+            {
+                "red": "8",
+                "izpulnitel": "Теди",
+                "kakvo": "танцува",
+                "info": "музика: Микс от няколко песни"
+            },
+            {
+                "red": "9",
+                "izpulnitel": "Софи, Ния Па., Анна-Мария, Ния М.",
+                "kakvo": "изложба",
+                "info": "интересни и красиви картини"
+            },
+            {
+                "red": "10",
+                "izpulnitel": "Ани, Нати, Ния По.",
+                "kakvo": "новини",
+                "info": "Новини на Брадачко и Мустачко"
+            },
+            {
+                "red": "11",
+                "izpulnitel": "Руми и Божи",
+                "kakvo": "стихче",
+                "info": "стихче: Ваканция"
+            },
+            {
+                "red": "12",
+                "izpulnitel": "Дари и Ния По.",
+                "kakvo": "танцуват",
+                "info": "песен: Jonas Brothers - Sucker"
+            },
+            {
+                "red": "13",
+                "izpulnitel": "Дими и Ния М.",
+                "kakvo": "танцуват",
+                "info": "песен: Ariana Grande - Break up with your girlfriend,I'm bored"
+            },
+            {
+                "red": "14",
+                "izpulnitel": "Митко 1, Митко 2 и Милан",
+                "kakvo": "презентация",
+                "info": "тема: TOP 8 ПРИЧИНИ ДА НЕ ОБИЧАМЕ МЪЧИЛИЩЕТО"
+            },
+            {
+                "red": "15",
+                "izpulnitel": "Ясен",
+                "kakvo": "стихче",
+                "info": "стихче: Най-добрата игра"
+            },
+            {
+                "red": "16",
+                "izpulnitel": "Съни",
+                "kakvo": "танцува",
+                "info": "песен: Hall of fame"
+            },
+            {
+                "red": "17",
+                "izpulnitel": "Йоан Дж., Рая Т., Изи, Теди",
+                "kakvo": "свирят на пиано",
+                "info": "запис на изпълненията"
+            },
+            {
+                "red": "18",
+                "izpulnitel": "Али",
+                "kakvo": "стихче",
+                "info": "липсва"
+            },
+            {
+                "red": "19",
+                "izpulnitel": "Рая У. и Рая Д.",
+                "kakvo": "танцуват",
+                "info": "песен: DARA - Все на мен"
+            },
+            {
+                "red": "20",
+                "izpulnitel": "всички",
+                "kakvo": "танц",
+                "info": "песен: Martin Garrix - Animals"
+            }
+        ];
+        let qps = {};
+        let qpsArray = location.href.split("?")[location.href.split("?").length-1].split("&");
+        qpsArray = qpsArray.map(e=>e.split("="));
+        qpsArray.forEach(p=>qps[p[0]]=p[1]);
+        if(qps.q && qps.qt && qps.submit){
+            qps.q = decodeURI(qps.q);
+            console.log(qps);
+            let res = [];
+            for(row of db){
+                if(row[qps.qt].includes(qps.q)){
+                    res.push(row);
+                }
+            }
+            if(res.length == 0){
+                document.body.innerHTML += "<b style=\"color:red;\">Не са открити съответстващи изпълнения.</b>";
+            }else{
+                let addstr = "";
+                addstr += "<table><caption>Съответстващи Представления</caption><tr><th>Ред</th><th>Изпълнител</th><th>Какво</th><th>Информация</th></tr>";
+                for(row of res){
+                    addstr += `<tr><td>${row.red}</td><td>${row.izpulnitel}</td><td>${row.kakvo}</td><td>${row.info}</td></tr>`;
+                }
+                addstr += "</table>";
+                document.body.innerHTML += addstr;
+                document.getElementById("select").value = qps.qt;
+                document.getElementById("text").value = qps.q;
+            }
+        }else{
+            let addstr = "";
+            addstr += "<table><caption>Всички Представления</caption><tr><th>Ред</th><th>Изпълнител</th><th>Какво</th><th>Информация</th></tr>";
+            for(row of db){
+                addstr += `<tr><td>${row.red}</td><td>${row.izpulnitel}</td><td>${row.kakvo}</td><td>${row.info}</td></tr>`;
+            }
+            addstr += "</table>";
+            document.body.innerHTML += addstr;
+        }
+    </script>
+</body>
+</html>

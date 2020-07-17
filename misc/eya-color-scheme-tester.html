@@ -38,13 +38,9 @@
     <script>
         let qps = {};
 
-        try{
-            let qpsArray = location.href.split("?")[1].split("&");
-            qpsArray = qpsArray.map(e=>e.split("="));
-            qpsArray.forEach(p=>qps[p[0]]=p[1]);
-        }catch(e){
-            console.log(`probably no query parameters: ${e}`);
-        }
+        let qpsArray = location.href.split("?")[location.href.split("?").length-1].split("&");
+        qpsArray = qpsArray.map(e=>e.split("="));
+        qpsArray.forEach(p=>qps[p[0]]=p[1]);
 
         document.title = qps["ttl"] || "ЧРД Ея!";
 
