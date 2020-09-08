@@ -1,8 +1,8 @@
 {
     "name":"name",
-    "code":"code",
+    "code":"console.error(\"code\")",
     "page":{
-        "html":"page.html",
-        "js":"page.js"
+        "html":"<h1>page.html</h1>",
+        "js":"console.error(\"page.js\")"
     }
 }
