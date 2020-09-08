@@ -12,6 +12,14 @@
     <script src="https://kit.fontawesome.com/ad53433535.js" crossorigin="anonymous"></script>
     <script src="./res/js/includes.js"
         data-includes="navbar,./res/includes/nav.html|fonts,./res/includes/fonts.html"></script>
+    <script>
+      const downloads = dnlds => {
+        let win = open("","",".");
+        Object.keys(dnlds).forEach(dnld => {
+          win.document.body.innerHTML += `<a onclick="window.close()" href="${dnlds[dnld]}" download>${dnld}</a><br>`;
+        });
+      };
+    </script>
 </head>
 
 <body>
@@ -25,9 +33,7 @@
               <tr>
                 <th>Name</th>
                 <th>Description</th>
-                <th>pdf</th>
-                <th>html</th>
-                <th>md</th>
+                <th>Download(s)</th>
               </tr>
             </thead>
             <tbody>
