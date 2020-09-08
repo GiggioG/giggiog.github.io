@@ -19,7 +19,7 @@
       const downloads = dnlds => {
         let win = open("","",".");
         Object.keys(dnlds).forEach(dnld => {
-          win.document.body.innerHTML += `<a onclick="window.close()" href="${dnlds[dnld]}" download>${dnld}</a><br>`;
+          win.document.body.innerHTML += `<a href="${dnlds[dnld]}" download>${dnld}</a><br>`;
         });
       };
     </script>
