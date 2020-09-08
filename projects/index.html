@@ -18,9 +18,11 @@
     <script>
       const downloads = dnlds => {
         let win = open("","",".");
-        Object.keys(dnlds).forEach(dnld => {
-          win.document.body.innerHTML += `<a href="${dnlds[dnld]}" download>${dnld}</a><br>`;
-        });
+        if(dnlds && (dnlds != {})){
+          Object.keys(dnlds).forEach(dnld => {
+            win.document.body.innerHTML += `<a href="${dnlds[dnld]}" download>${dnld}</a><br>`;
+          });
+        }
       };
     </script>
     <i class="incl-navbar"></i>
@@ -40,16 +42,14 @@
               <tr>
                 <td>CTF-Documentation</td>
                 <td>The rules of a game, called Capture the Flag (CTF)</td>
-                <td><a href="./res/downloads/en/CTF-Documentation/CTF-Documentation.pdf" download>pdf download</a></td>
-                <td><a href="./res/downloads/en/CTF-Documentation/CTF-Documentation.html" download>html download</a></td>
-                <td><a href="./res/downloads/en/CTF-Documentation/CTF-Documentation.md" download>md download</a></td>
-              </tr>
-              <tr>
-                <td>ПЗ-Документация</td>
-                <td>Правилата на игра, на име Плени Знамето (ПЗ)</td>
-                <td><a href="./res/downloads/bg/CTF-Documentation/CTF-Documentation.pdf" download>pdf изтегляне</a></td>
-                <td><a href="./res/downloads/bg/CTF-Documentation/CTF-Documentation.html" download>html изтегляне</a></td>
-                <td><a href="./res/downloads/bg/CTF-Documentation/CTF-Documentation.md" download>md изтегляне</a></td>
+                <td><a href="javascript:downloads({
+                  'English pdf':'./res/downloads/CTF-Documentation/en/CTF-Documentation.pdf',
+                  'English html':'./res/downloads/CTF-Documentation/en/CTF-Documentation.html',
+                  'English md':'./res/downloads/CTF-Documentation/en/CTF-Documentation.md',
+                  'Bulgarian pdf':'./res/downloads/CTF-Documentation/bg/CTF-Documentation.pdf',
+                  'Bulgarian html':'./res/downloads/CTF-Documentation/bg/CTF-Documentation.html',
+                  'Bulgarian md':'./res/downloads/CTF-Documentation/bg/CTF-Documentation.md',
+                })">Choose language & file type</a></td>
               </tr>
             </tbody>
             </table>
