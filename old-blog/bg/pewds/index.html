@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PewDiePie vs. T-Series</title>
+    <link rel="shortcut icon" href="https://s.ytimg.com/yts/img/favicon-vfl8qSV2F.ico" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        var doc = document
+        var subpdp;
+        var subtsr;
+        var viewpdp;
+        var viewtsr;
+        var vidpdp;
+        var vidtsr;
+        function load() {
+            $.getJSON("https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UC-lHJZR3Gqxm24_Vd_AJ5Yw&key=AIzaSyCBI_uE4Abk-IkQuCUfiC862adteZhzWNU", function (pdp) {
+                doc.getElementById("pdp.sub").innerHTML = pdp.items[0].statistics.subscriberCount
+                doc.getElementById("pdp.view").innerHTML = pdp.items[0].statistics.viewCount
+                doc.getElementById("pdp.vid").innerHTML = pdp.items[0].statistics.videoCount
+                subpdp = Number(pdp.items[0].statistics.subscriberCount)
+                viewpdp = Number(pdp.items[0].statistics.viewCount)
+                vidpdp = Number(pdp.items[0].statistics.videoCount)
+            })
+            $.getJSON("https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCq-Fj5jknLsUf-MWSy4_brA&key=AIzaSyCBI_uE4Abk-IkQuCUfiC862adteZhzWNU", function (tsr) {
+                doc.getElementById("tsr.sub").innerHTML = tsr.items[0].statistics.subscriberCount
+                doc.getElementById("tsr.view").innerHTML = tsr.items[0].statistics.viewCount
+                doc.getElementById("tsr.vid").innerHTML = tsr.items[0].statistics.videoCount
+                subtsr = Number(tsr.items[0].statistics.subscriberCount)
+                viewtsr = Number(tsr.items[0].statistics.viewCount)
+                vidtsr = Number(tsr.items[0].statistics.videoCount)
+            })
+            razsub(subpdp,subtsr)
+            razview(viewpdp,viewtsr)
+            razvid(vidpdp,vidtsr)
+        }
+        function razsub(pdp, tsr) {
+            if(pdp > tsr){
+                document.getElementById("razsub").innerHTML = `PewDiePie има ${pdp - tsr} повече абонати от T-Series.`
+            }else if(pdp < tsr){
+                document.getElementById("razsub").innerHTML = `Т-Series има ${tsr - pdp} повече абонати от PewDiePie.`
+            }else if(pdp == tsr){
+                document.getElementById("razsub").innerHTML = `PewDiePie и T-Series са на равно, и имат по ${pdp} абоната.`
+            }
+        }
+        function razview(pdp, tsr) {
+            if(pdp > tsr){
+                document.getElementById("razview").innerHTML = `PewDiePie има ${pdp - tsr} повече гледания от T-Series.`
+            }else if(pdp < tsr){
+                document.getElementById("razview").innerHTML = `Т-Series има ${tsr - pdp} повече гледания от PewDiePie.`
+            }else if(pdp == tsr){
+                document.getElementById("razview").innerHTML = `PewDiePie и T-Series са на равно, и имат по ${pdp} гледания.`
+            }
+        }
+        function razvid(pdp, tsr) {
+            if(pdp > tsr){
+                document.getElementById("razvid").innerHTML = `PewDiePie има ${pdp - tsr} повече видеа от T-Series.`
+            }else if(pdp < tsr){
+                document.getElementById("razvis").innerHTML = `Т-Series има ${tsr - pdp} повече видеа от PewDiePie.`
+            }else if(pdp == tsr){
+                document.getElementById("razvid").innerHTML = `PewDiePie и T-Series са на равно, и имат по ${pdp} видеа.`
+            }
+        }
+        $(document).ready(function () {
+            window.setInterval(function () {
+                load()
+            }, 1000)
+        })
+    </script>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        .pdp-o {
+            background-color: rgb(255, 0, 128);
+            color: black;
+        }
+
+        .pdp-e {
+            color: rgb(255, 0, 128);
+            background-color: black;
+        }
+
+        .tsr-e {
+            background-color: rgb(185, 91, 37);
+            color: rgb(193, 221, 129);
+        }
+
+        .tsr-o {
+            color: rgb(185, 91, 37);
+            background-color: rgb(193, 221, 129);
+        }
+
+        .tab-o {
+            color: rgb(97, 111, 65);
+            background-color: rgb(220, 46, 83);
+        }
+
+        .tab-e {
+            background-color: rgb(97, 111, 65);
+            color: rgb(220, 46, 83);
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th class="tab-o">Вид данни</th>
+            <th class="pdp-o">PewDiePie</th>
+            <th class="tsr-o">T-Series</th>
+        </tr>
+        <tr>
+            <td class="tab-e">Абонати</td>
+            <td id="pdp.sub" class="pdp-e">Зареждане...</td>
+            <td id="tsr.sub" class="tsr-e">Зареждане...</td>
+        </tr>
+        <tr>
+            <td class="tab-o">Гледания</td>
+            <td id="pdp.view" class="pdp-o">Зареждане...</td>
+            <td id="tsr.view" class="tsr-o">Зареждане...</td>
+        </tr>
+        <tr>
+            <td class="tab-e">Видеа</td>
+            <td id="pdp.vid" class="pdp-e">Зареждане...</td>
+            <td id="tsr.vid" class="tsr-e">Зареждане...</td>
+        </tr>
+    </table>
+    <span id="razsub"><span>
+        <br>
+    <span id="razview"></span>
+        <br>
+    <span id="razvid"></span>
+</body>
+
+</html>
