@@ -10,8 +10,7 @@
     <i class="incl-fonts"></i>
     <link rel="stylesheet" href="./res/css/style.css">
     <script src="https://kit.fontawesome.com/ad53433535.js" crossorigin="anonymous"></script>
-    <script src="./res/js/includes.js"
-        data-includes="navbar,./res/includes/nav.html|fonts,./res/includes/fonts.html"></script>
+    <script src="./res/js/includes.js" data-includes="navbar,./res/includes/nav.html|fonts,./res/includes/fonts.html"></script>
 </head>
 
 <body>
@@ -22,8 +21,7 @@
             <li>
                 <h2 class="secondary-text">Shliokavitsa ( {lxokawica ) </h2>
                 <p class="content-paragraph">
-                    Shliokavitsa or Шльокавица is when someone writes in cyrillic, but they<br>
-                    forgot to change to cyrillic keyboard.
+                    Shliokavitsa or Шльокавица is when someone writes in cyrillic, but they<br> forgot to change to cyrillic keyboard.
                 </p>
                 <input type="text" id="shliokavitsa-ipt" placeholder="Enter cyrillic text here...">
                 <button id="shliokavitsa-btn">Convert</button>
@@ -32,8 +30,7 @@
             <li>
                 <h2 class="secondary-text">Wierd Bulgarian</h2>
                 <p class="content-paragraph">
-                    Wierd bulgarian is basicly the cyrillic alphabet, but the symbols are replaced<br>
-                    with similar sounding or looking letters.
+                    Wierd bulgarian is basicly the cyrillic alphabet, but the symbols are replaced<br> with similar sounding or looking letters.
                 </p>
                 <input type="text" id="wierdbg-ipt" placeholder="Enter bulgarian text here...">
                 <button id="wierdbg-btn">Convert</button>
@@ -42,37 +39,37 @@
         </ul>
     </main>
     <script>
-        function shliokavitsa(cyrillic){
+        function shliokavitsa(cyrillic) {
             let alpha = [
                 "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЮЯабвгдежзийклмнопрстуфхцчшщъьюя",
                 "ABWGDEVZIJKLMNOPRSTUFHC~{}YX|Qabwgdevzijklmnoprstufhc`[]yx\\q"
             ];
-            cyrillic.split("").forEach(lett=>{
-                if(alpha[0].indexOf(lett) != -1){
+            cyrillic.split("").forEach(lett => {
+                if (alpha[0].indexOf(lett) != -1) {
                     document.querySelector("#shliokavitsa-res").innerHTML += alpha[1][alpha[0].indexOf(lett)];
-                }else{
+                } else {
                     document.querySelector("#shliokavitsa-res").innerHTML += lett;
                 }
             });
         }
-        function wierdbg(bg){
+
+        function wierdbg(bg) {
             let alpha = [
-                "абвгдежзийклмнопрстуфхцчшщъьюяАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЮЯ",
-                ["α","b","β","g","δ","ε","j","ʒ","i","y","c","λ","μ","n","ω","p","г","σ","t","γ","ƒ","h","t͡σ","t͡ʃ","ʃ","ʃ͡t","u","ъ","y͡γ","y͡α","Α","B","Β","G","Δ","E","J","ʒ","I","Y","C","Λ","M","N","Ω","P","Г","Σ","T","Γ","Ƒ","H","T͡Σ","T͡Ʃ","ʃ","Ʃ͡T","U","Ъ","Y͡Γ","Y͡Α"]
+                "абвгдежзийклмнопрстуфхцчшщъьюяАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЮЯ", ["α", "b", "β", "g", "δ", "ε", "j", "ʒ", "i", "y", "c", "λ", "μ", "n", "ω", "p", "г", "σ", "t", "γ", "ƒ", "h", "t͡σ", "t͡ʃ", "ʃ", "ʃ͡t", "u", "ъ", "y͡γ", "y͡α", "Α", "B", "Β", "G", "Δ", "E", "J", "ʒ", "I", "Y", "C", "Λ", "M", "N", "Ω", "P", "Г", "Σ", "T", "Γ", "Ƒ", "H", "T͡Σ", "T͡Ʃ", "ʃ", "Ʃ͡T", "U", "Ъ", "Y͡Γ", "Y͡Α"]
             ];
-            bg.split("").forEach(lett=>{
-                if(alpha[0].indexOf(lett) != -1){
+            bg.split("").forEach(lett => {
+                if (alpha[0].indexOf(lett) != -1) {
                     document.querySelector("#wierdbg-res").innerHTML += alpha[1][alpha[0].indexOf(lett)];
-                }else{
+                } else {
                     document.querySelector("#wierdbg-res").innerHTML += lett;
                 }
             });
         }
-        document.querySelector("#shliokavitsa-btn").addEventListener("click",_=>{
+        document.querySelector("#shliokavitsa-btn").addEventListener("click", _ => {
             document.querySelector("#shliokavitsa-res").innerHTML = "";
             shliokavitsa(document.querySelector("#shliokavitsa-ipt").value);
         })
-        document.querySelector("#wierdbg-btn").addEventListener("click",_=>{
+        document.querySelector("#wierdbg-btn").addEventListener("click", _ => {
             document.querySelector("#wierdbg-res").innerHTML = "";
             wierdbg(document.querySelector("#wierdbg-ipt").value);
         })
