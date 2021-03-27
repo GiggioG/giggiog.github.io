@@ -36,6 +36,15 @@
                 <button id="wierdbg-btn">Convert</button>
                 <p class="content-paragraph" id="wierdbg-res"></p>
             </li>
+            <li>
+                <h2 class="secondary-text">Roman numeral parser</h2>
+                <p class="content-paragraph">
+                    A parser I wrote, that converts roman numerals to decimal.<br>Please use only the capital versions of these letters: "I,V,X,L,C,D,M".
+                </p>
+                <input type="text" id="roman-ipt" placeholder="Enter roman numeral here...">
+                <button id="roman-btn">Convert</button>
+                <p class="content-paragraph" id="roman-res"></p>
+            </li>
         </ul>
     </main>
     <script>
@@ -65,14 +74,82 @@
                 }
             });
         }
+
+        function roman() {
+            const roms = {
+                "M": 1000,
+                "D": 500,
+                "C": 100,
+                "L": 50,
+                "X": 10,
+                "V": 5,
+                "I": 1
+            };
+            const ipt = document.querySelector("input#roman-ipt");
+            const opt = document.querySelector("p#roman-res");
+            let roman = ipt.value;
+            let parts = [];
+            for (r in roms) {
+                parts.push(roman.slice(0, roman.lastIndexOf(r) + 1));
+                roman = roman.slice(roman.lastIndexOf(r) + 1);
+            }
+            console.log(parts);
+            parts = parts.map(p => {
+                if (p.length == 0) {
+                    return [""];
+                }
+                let acc = "";
+                let ret = [];
+                let dig = p[p.length - 1];
+                for (let i = 0; i < p.length; i++) {
+                    console.log(p[i]);
+                    acc = acc + p[i];
+                    if (p[i] == dig) {
+                        ret.push(acc);
+                        acc = "";
+                    }
+                }
+                return ret;
+            });
+            console.log(parts);
+            let sum = 0;
+            parts.forEach(p => {
+                for (r of p) {
+                    console.log(`r: ${r}`);
+                    if (r.length == 0) {
+                        continue;
+                        console.log(`add 0`);
+                    }
+                    if (r.length == 1) {
+                        sum += roms[r];
+                        console.log(`add ${roms[r]}`);
+                        continue;
+                    }
+                    let ret = roms[r[r.length - 1]];
+                    if (r.length >= 2) {
+                        for (let i = r.length - 2; i >= 0; i--) {
+                            ret -= roms[r[i]];
+                        }
+                    }
+                    sum += ret;
+                    console.log(`add ${ret}`);
+                }
+            });
+            opt.innerText = sum;
+        }
+
         document.querySelector("#shliokavitsa-btn").addEventListener("click", _ => {
             document.querySelector("#shliokavitsa-res").innerHTML = "";
             shliokavitsa(document.querySelector("#shliokavitsa-ipt").value);
-        })
+        });
         document.querySelector("#wierdbg-btn").addEventListener("click", _ => {
             document.querySelector("#wierdbg-res").innerHTML = "";
             wierdbg(document.querySelector("#wierdbg-ipt").value);
-        })
+        });
+        document.querySelector("#roman-btn").addEventListener("click", _ => {
+            document.querySelector("#roman-res").innerHTML = "";
+            roman(document.querySelector("#roman-ipt").value);
+        });
     </script>
 </body>
 
