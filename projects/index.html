@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/ad53433535.js" crossorigin="anonymous"></script>
     <script src="./res/js/includes.js" data-includes="navbar,./res/includes/nav.html|fonts,./res/includes/fonts.html"></script>
     <script>
-        const downloads = dnlds => {
+        const downloads = (dnlds, download) => {
             console.log(dnlds);
             let div = document.createElement("div");
             div.classList = "download-popup";
@@ -23,7 +23,7 @@
                     let el = document.createElement("a")
                     el.innerText = dnld;
                     el.setAttribute("href", dnlds[dnld]);
-                    el.setAttribute("download", true)
+                    el.setAttribute("download", download)
                     div.appendChild(el)
                     div.appendChild(document.createElement("br"));
                 });
@@ -56,7 +56,7 @@
                         'Bulgarian pdf':'./projects/downloads/CTF-Documentation/bg/CTF-Documentation.pdf',
                         'Bulgarian html':'./projects/downloads/CTF-Documentation/bg/CTF-Documentation.html',
                         'Bulgarian md':'./projects/downloads/CTF-Documentation/bg/CTF-Documentation.md'
-                    })">Download</a></td>
+                    }, true)">Download</a></td>
                 </tr>
                 <tr>
                     <td>Bulgarian Arabic</td>
@@ -65,7 +65,7 @@
                         'Bulgarian pdf':'./projects/downloads/bg-ar/bg-ar.pdf',
                         'Bulgarian html':'./projects/downloads/bg-ar/bg-ar.html',
                         'Bulgarian md':'./projects/downloads/bg-ar/bg-ar.md'
-                    })">Download</a></td>
+                    }, true)">Download</a></td>
                 </tr>
                 <tr>
                     <td>SHU</td>
@@ -121,6 +121,19 @@
                     <td>SyncroVid</td>
                     <td>A platform for watching videos simultaniously with other people.</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/SyncroVid">SyncroVid Github Repo</a></td>
+                </tr>
+                <tr>
+                    <td>splitEdit</td>
+                    <td>Put video as video.mkv. Then split video into one mp3 file for each audio track and one mp4 file, then edit them with an app of your choice, then reassemble the video.</td>
+                    <td><a target="_blank" href="https://github.com/GiggioG/splitEdit">splitEdit Github Repo</a></td>
+                </tr>
+                <tr>
+                    <td>WSID</td>
+                    <td>A google sheet with a unique number for each writing system I know. It also includes neographies. WSID stands for WritingSystemID.</td>
+                    <td><a class="projects-download-link" onclick="downloads({
+                        'WSID':'http://tiny.cc/WSID',
+                        'What is WSID':'http://tiny.cc/what-is-WSID'
+                    }, true)">Links</a></td>
                 </tr>
             </tbody>
             </tbody>
