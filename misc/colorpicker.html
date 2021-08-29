@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color picker</title>
+</head>
+
+<body>
+    <p id="p">
+        Pick a color, then press the button that says "Copy".
+    </p>
+    <input type="color" id="picker">
+    <button id="button" onclick="go()">Copy</button>
+    <script>
+        function go() {
+            navigator.clipboard.writeText(document.querySelector("#picker").value);
+        }
+        if (location.search == "?bg") {
+            document.querySelector("#p").innerText = "Изберете цвят, след това натиснете бутона на който пише \"Копирай\"";
+            document.querySelector("#button").innerText = "Копирай";
+        }
+    </script>
+</body>
+
+</html>
