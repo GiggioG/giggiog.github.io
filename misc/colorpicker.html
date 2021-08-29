@@ -15,12 +15,17 @@
     <input type="color" id="picker">
     <button id="button" onclick="go()">Copy</button>
     <script>
+        let copiedMessage = "Copied.";
+
         function go() {
-            navigator.clipboard.writeText(document.querySelector("#picker").value);
+            navigator.clipboard.writeText(document.querySelector("#picker").value).then(() => {
+                alert(copiedMessage);
+            });
         }
         if (location.search == "?bg") {
             document.querySelector("#p").innerText = "Изберете цвят, след това натиснете бутона на който пише \"Копирай\"";
             document.querySelector("#button").innerText = "Копирай";
+            copiedMessage = "Копирано.";
         }
     </script>
 </body>
