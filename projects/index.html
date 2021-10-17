@@ -13,6 +13,7 @@
     <script src="./res/js/includes.js" data-includes="navbar,./res/includes/nav.html|fonts,./res/includes/fonts.html"></script>
     <script>
         const downloads = (dnlds, download) => {
+            document.querySelector('div.download-popup').remove();
             console.log(dnlds);
             let div = document.createElement("div");
             div.classList = "download-popup";

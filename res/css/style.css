@@ -217,7 +217,7 @@ div.download-popup {
     background-color: var(--col-bg-dark);
     width: 50%;
     height: 50%;
-    position: absolute;
+    position: fixed;
     left: 25%;
     top: 25%;
     border: 1px solid var(--col-1);
