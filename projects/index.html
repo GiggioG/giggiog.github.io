@@ -10,7 +10,7 @@
     <i class="incl-fonts"></i>
     <link rel="stylesheet" href="./res/css/style.css">
     <script src="https://kit.fontawesome.com/ad53433535.js" crossorigin="anonymous"></script>
-    <script src="./res/js/includes.js" data-includes="navbar,./res/includes/nav.html|fonts,./res/includes/fonts.html"></script>
+    <script src="./res/js/includes.js" data-includes="navbar,./res/includes/nav.html|fonts,./res/includes/fonts.html|ready,./res/includes/greencheck.html|canceled,./res/includes/redstop.html"></script>
     <script>
         const downloads = (dnlds, download) => {
             let prevPopup = document.querySelector('div.download-popup');
@@ -40,7 +40,8 @@
     <i class="incl-navbar"></i>
     <main class="content-paragraph">
         <h1 class="primary-text">Projects</h1>
-        This page contains some projects made by me and download links for them.
+        This page contains some projects made by me and download links for them.<br> Projects that are ready(ready does not mean no updates) have a <i class="incl-ready"></i> icon next to their name.<br> Projects that are have been scrapped for one reason
+        or another have a <i class="incl-canceled"></i> icon next to their name.
         <table>
             <thead>
                 <tr>
@@ -50,8 +51,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>CTF-Documentation</td>
+                <tr id="CTF-Documentation">
+                    <td><i class="incl-ready"></i>CTF-Documentation</td>
                     <td>The rules of a game, called Capture the Flag (CTF)</td>
                     <td><a class="projects-download-link" onclick="downloads({
                         'English pdf':'./projects/downloads/CTF-Documentation/en/CTF-Documentation.pdf',
@@ -62,8 +63,8 @@
                         'Bulgarian md':'./projects/downloads/CTF-Documentation/bg/CTF-Documentation.md'
                     }, true)">Download</a></td>
                 </tr>
-                <tr>
-                    <td>Bulgarian Arabic</td>
+                <tr id="Bulgarian-Arabic">
+                    <td><i class="incl-ready"></i>Bulgarian Arabic</td>
                     <td>How to write the Bulgarian language with the Arabic script.</td>
                     <td><a class="projects-download-link" onclick="downloads({
                         'Bulgarian pdf':'./projects/downloads/bg-ar/bg-ar.pdf',
@@ -71,73 +72,73 @@
                         'Bulgarian md':'./projects/downloads/bg-ar/bg-ar.md'
                     }, true)">Download</a></td>
                 </tr>
-                <tr>
+                <tr id="SHU">
                     <td>SHU</td>
                     <td>A chrome extention that enables developers to make utility plugins for jitsimeet based systems like shkolo.bg.<br>The name comes from SHkoloUtilities.</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/shu/">Shu Github Repo</a></td>
                 </tr>
-                <tr>
-                    <td>Flappy Bird</td>
+                <tr id="Flappy-bird">
+                    <td><i class="incl-ready"></i>Flappy Bird</td>
                     <td>A simple clone of flappy bird I made in Processing</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/flappy-bird/">Flappy Bird Github Repo</a></td>
                 </tr>
-                <tr>
-                    <td>Pc-Remote</td>
+                <tr id="PC-remote">
+                    <td><i class="incl-ready"></i>PC Remote</td>
                     <td>gives control over keyboard and mouse via a node websocket server powered html interface</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/pc-remote/">Pc-Remote Github Repo</a></td>
                 </tr>
-                <tr>
-                    <td>Genadi Snowstorm</td>
+                <tr id="Genadi-snowstorm">
+                    <td><i class="incl-ready"></i>Genadi Snowstorm</td>
                     <td>A game about how Genadi dodges dangerous snowballs. My classmates and me made it together in my programming class.</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/GenadiSnowstorm/">Genadi Snowstorm Github Repo</a></td>
                 </tr>
-                <tr>
-                    <td>Machine Cells</td>
+                <tr id="Machine-cells">
+                    <td><i class="incl-ready"></i>Machine Cells</td>
                     <td>A ripoff version of Sam Hogan's Cell Machine. My classmates and me made it together in my programming class.</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/MachineCells/">Machine Cells Github Repo</a></td>
                 </tr>
-                <tr>
-                    <td>Tank Tactics</td>
+                <tr id="Tank-tactics">
+                    <td><i class="incl-ready"></i>Tank Tactics</td>
                     <td>Tank Tactics is an implementation of the game "Tank Turn Tactics" from <a href="https://youtu.be/t9WMNuyjm4w">this GDC talk</a>. I made it as close as possible to the game described in the talk, so I recommend watching it and learning
                         the rules that way.</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/tank-tactics/">Tank Tactics Github Repo</a></td>
                 </tr>
-                <tr>
-                    <td>Notepad By User</td>
+                <tr id="Notepad-by-user">
+                    <td><i class="incl-ready"></i>Notepad By User</td>
                     <td>A simple batch script I wrote a while ago, that gives multiple people different txt files. "Accounts" have no passwords.</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/notepad-by-user/">Notepad By User Github Repo</a></td>
                 </tr>
-                <tr>
+                <tr id="CDL">
                     <td>CDL</td>
                     <td>ConsoleDrawingLibrary - a c++ library for drawing in the console.</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/CDL">CDL Github Repo</a></td>
                 </tr>
-                <tr>
+                <tr id="Bliznaci">
                     <td>Bliznaci</td>
                     <td>A command-line browser for the gemini:// protocol</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/bliznaci">Bliznaci Github Repo</a></td>
                 </tr>
-                <tr>
-                    <td>sdl2Base</td>
+                <tr id="sdl2Base">
+                    <td><i class="incl-ready"></i>sdl2Base</td>
                     <td>A basic SDL2 app all of my future SDL2 projects will be based on.</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/sdl2Base">sdl2Base Github Repo</a></td>
                 </tr>
-                <tr>
-                    <td>SyncroVid</td>
+                <tr id="SyncroVid">
+                    <td><i class="incl-ready"></i>SyncroVid</td>
                     <td>A platform for watching videos simultaniously with other people.</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/SyncroVid">SyncroVid Github Repo</a></td>
                 </tr>
-                <tr>
-                    <td>splitEdit</td>
+                <tr id="splitEdit">
+                    <td><i class="incl-ready"></i>splitEdit</td>
                     <td>Put video as video.mkv. Then split video into one mp3 file for each audio track and one mp4 file, then edit them with an app of your choice, then reassemble the video.</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/splitEdit">splitEdit Github Repo</a></td>
                 </tr>
-                <tr>
-                    <td>dogehouse-bot</td>
+                <tr id="dogehouse-bot">
+                    <td><i class="incl-canceled"></i></i>dogehouse-bot</td>
                     <td>A bot I made for <a target="_blank" href="https://github.com/benawad/dogehouse">Dogehouse</a> with nothing but raw websockets. I made it for fun because I like barebones stuff like this.</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/dogehouse-bot">dogehouse-bot Github Repo</a></td>
                 </tr>
-                <tr>
+                <tr id="WSID">
                     <td>WSID</td>
                     <td>A google sheet with a unique number for each writing system I know. It also includes neographies. WSID stands for WritingSystemID.</td>
                     <td><a class="projects-download-link" onclick="downloads({
