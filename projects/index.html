@@ -10,7 +10,7 @@
     <i class="incl-fonts"></i>
     <link rel="stylesheet" href="./res/css/style.css">
     <script src="https://kit.fontawesome.com/ad53433535.js" crossorigin="anonymous"></script>
-    <script src="./res/js/includes.js" data-includes="navbar,./res/includes/nav.html|fonts,./res/includes/fonts.html|ready,./res/includes/greencheck.html|canceled,./res/includes/redstop.html"></script>
+    <script src="./res/js/includes.js" data-includes="navbar,./res/includes/nav.html|fonts,./res/includes/fonts.html|ready,./res/includes/greencheck.html|canceled,./res/includes/redstop.html|paused,./res/includes/yellowpause.html"></script>
     <script>
         const downloads = (dnlds, download) => {
             let prevPopup = document.querySelector('div.download-popup');
@@ -41,7 +41,7 @@
     <main class="content-paragraph">
         <h1 class="primary-text">Projects</h1>
         This page contains some projects made by me and download links for them.<br> Projects that are ready(ready does not mean no updates) have a <i class="incl-ready"></i> icon next to their name.<br> Projects that are have been scrapped for one reason
-        or another have a <i class="incl-canceled"></i> icon next to their name.
+        or another have a <i class="incl-canceled"></i> icon next to their name.<br> Projects that I haven't abandoned, but won't work on untill I aquire some new knoledge or motivation have a <i class="incl-paused"></i> icon.
         <table>
             <thead>
                 <tr>
@@ -73,8 +73,8 @@
                     }, true)">Download</a></td>
                 </tr>
                 <tr id="SHU">
-                    <td>SHU</td>
-                    <td>A chrome extention that enables developers to make utility plugins for jitsimeet based systems like shkolo.bg.<br>The name comes from SHkoloUtilities.</td>
+                    <td><i class="incl-paused"></i>SHU</td>
+                    <td>A chrome extention that enables developers to make utility plugins for jitsimeet based systems like shkolo.bg.<br>The name comes from SHkoloUtilities.<b>Paused because I have no motivation.</b></td>
                     <td><a target="_blank" href="https://github.com/GiggioG/shu/">Shu Github Repo</a></td>
                 </tr>
                 <tr id="Flappy-bird">
@@ -109,13 +109,13 @@
                     <td><a target="_blank" href="https://github.com/GiggioG/notepad-by-user/">Notepad By User Github Repo</a></td>
                 </tr>
                 <tr id="CDL">
-                    <td>CDL</td>
+                    <td><i class="incl-ready"></i>CDL</td>
                     <td>ConsoleDrawingLibrary - a c++ library for drawing in the console.</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/CDL">CDL Github Repo</a></td>
                 </tr>
                 <tr id="Bliznaci">
-                    <td>Bliznaci</td>
-                    <td>A command-line browser for the gemini:// protocol</td>
+                    <td><i class="incl-paused"></i>Bliznaci</td>
+                    <td>A command-line browser for the gemini:// protocol. <b>Paused because I cannot figure out a bug.</b></td>
                     <td><a target="_blank" href="https://github.com/GiggioG/bliznaci">Bliznaci Github Repo</a></td>
                 </tr>
                 <tr id="sdl2Base">
