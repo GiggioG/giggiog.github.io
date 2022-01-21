@@ -27,7 +27,10 @@
                     let el = document.createElement("a")
                     el.innerText = dnld;
                     el.setAttribute("href", dnlds[dnld]);
-                    el.setAttribute("download", download)
+                    if (download) {
+                        el.setAttribute("download", download);
+                    }
+                    el.setAttribute("target", "_blank");
                     div.appendChild(el)
                     div.appendChild(document.createElement("br"));
                 });
@@ -143,8 +146,8 @@
                     <td>A google sheet with a unique number for each writing system I know. It also includes neographies. WSID stands for WritingSystemID.</td>
                     <td><a class="projects-download-link" onclick="downloads({
                         'WSID':'http://tiny.cc/WSID',
-                        'What is WSID':'http://tiny.cc/what-is-WSID'
-                    }, true)">Links</a></td>
+                        'What is WSID':'/wsid'
+                    }, false)">Links</a></td>
                 </tr>
             </tbody>
             </tbody>
