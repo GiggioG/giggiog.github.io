@@ -1,6 +1,6 @@
 # Takavoza
 ## What is Takavoza
-Takavoza is a writing system I created back around autumn of 2019. It was inspired by Arabic script, but at the time I was in 4th grade and didn't know anything about how the Arabic script works.
+Takavoza is a writing system I created back around autumn of 2019. It was inspired by Arabic script, but at the time I was in 4th grade and didn't know anything about how the Arabic script works. It has a [WSID](https://giggiog.github.io/wsid) of 7.
 ## How to read the images in these docs
 Anything black is the Takavoza that the image's trying to show. Anything red is a placeholder to show you how things should be alined. Anything grey shows you what something means.
 ## The writing system
@@ -25,3 +25,7 @@ You write the consonant, then depending on the consonant, you write the vowel ei
 Takavoza has a base 10 number system. The digits are written in a trapezoid with the bottom base missing and the linya forming the top base. **WHEN WRITING NUMBERS THEY ARE ADDED ONTO THE LINYA, NOT CREATED FROM CURVING IT**. This is demonstrated here:  
 ![Takavoza numbers](https://i.imgur.com/y1ccwPx.png)  
 This is the number 1234567890.
+## Names
+Because Takavoza doesn't have capital letters, names in the script are circled, like in Egyptian hieroglyphs, which is demonstrated here:  
+![Takavoza names](https://i.imgur.com/txiNRYK.png)  
+This says "Takavoza".
