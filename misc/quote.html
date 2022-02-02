@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random wiseman quote generator.</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Kumar+One+Outline&display=swap');
+        #quote {
+            font-family: 'Dancing Script', cursive;
+            width: max-content;
+        }
+        
+        #wiseman {
+            font-family: 'Kumar One Outline', cursive;
+            text-align: right;
+            width: 100%;
+        }
+        
+        #quote,
+        #wiseman {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        
+        #message {
+            margin-left: 10px;
+        }
+        
+        div {
+            margin-left: 30px;
+            margin-top: 30px;
+            width: max-content;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="text" placeholder="quote">
+    <button id="go">Make quote</button><span id="message"></span>
+    <br><br>
+    <div>
+        <h1 id="quote"></h1>
+        <h4 id="wiseman"></h4>
+    </div>
+    <script>
+        let wisemen = ["Ghandi", "Confuci", "Churchill", "Plato", "Aristotle", "Diogenes", "Bophades", "Julius Caeser", "Sun Tzu", "Abraham Lincoln", "Albert Einstein", "Nikola Tesla", "Thomas Edison", "Bill Gates", "Steve Jobs", "Isaac Newton", "Galileo Galilei", "Leonardo da Vinci", "Stephen Hawking", "Socrates", "Octavian Augustus", "Marcus Aurelius", "Martin Luther King, Jr.", "Barack Obama", "Nelson Mandela", "William Shakespeare", "Warren Buffett", "Leonhard Euler", "Marie Curie", "Charles Darwin"]
+
+        function randomWiseman() {
+            let rand = Math.floor(Math.random() * (wisemen.length + 1)) % wisemen.length;
+            return wisemen[rand];
+        }
+
+        document.querySelector("button#go").addEventListener("click", _ => {
+            let quote = document.querySelector("input#text").value;
+            let wiseman = randomWiseman();
+            document.querySelector("#quote").innerText = `„${quote}“`;
+            document.querySelector("#wiseman").innerText = ` - ${wiseman}`;
+            document.querySelector("#message").innerText = "Quote made. Feel free to screenshot."
+        })
+    </script>
+</body>
+
+</html>
