@@ -38,9 +38,10 @@
 </head>
 
 <body>
-    <input type="text" id="text" placeholder="quote">
-    <button id="go">Make quote</button><span id="message"></span>
-    <br><br>
+    <input type="text" id="ipt_quote" placeholder="Quote"><br>
+    <input type="text" id="ipt_wiseman" placeholder="Wiseman (optional)"><br>
+    <input type="text" id="ipt_spacetime" placeholder="Place/time (optional)"><br>
+    <button id="go">Make quote</button><span id="message"></span><br>
     <div>
         <h1 id="quote"></h1>
         <h4 id="wiseman"></h4>
@@ -54,10 +55,17 @@
         }
 
         document.querySelector("button#go").addEventListener("click", _ => {
-            let quote = document.querySelector("input#text").value;
-            let wiseman = randomWiseman();
+            let quote = document.querySelector("input#ipt_quote").value;
+            let wiseman = document.querySelector("input#ipt_wiseman").value;
+            if (wiseman.length == 0) {
+                wiseman = randomWiseman();
+            }
+            let spacetime = document.querySelector("input#ipt_spacetime").value;
+            if (spacetime.length > 0) {
+                spacetime = `,   ${spacetime}`;
+            }
             document.querySelector("#quote").innerText = `„${quote}“`;
-            document.querySelector("#wiseman").innerText = ` - ${wiseman}`;
+            document.querySelector("#wiseman").innerText = ` - ${wiseman}${spacetime.length>0?spacetime:""}`;
             document.querySelector("#message").innerText = "Quote made. Feel free to screenshot."
         })
     </script>
