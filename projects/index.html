@@ -12,6 +12,7 @@
     <script src="https://kit.fontawesome.com/ad53433535.js" crossorigin="anonymous"></script>
     <script src="./res/js/includes.js" data-includes="navbar,./res/includes/nav.html|fonts,./res/includes/fonts.html|ready,./res/includes/greencheck.html|canceled,./res/includes/redstop.html|paused,./res/includes/yellowpause.html"></script>
     <script>
+        Array.prototype.last = function(){return this[this.length-1]}
         const downloads = (dnlds, download) => {
             let prevPopup = document.querySelector('div.download-popup');
             if (prevPopup) {
@@ -28,7 +29,7 @@
                     el.innerText = dnld;
                     el.setAttribute("href", dnlds[dnld]);
                     if (download) {
-                        el.setAttribute("download", download);
+                        el.setAttribute("download", dnlds[dnld].split('/').last());
                     }
                     el.setAttribute("target", "_blank");
                     div.appendChild(el)
@@ -181,6 +182,15 @@
                     <td><i class="incl-ready"></i>Karty</td>
                     <td>Playing card simulator. Play any card game you want!</td>
                     <td><a target="_blank" href="https://github.com/GiggioG/Karty">Karty Github Repo</a></td>
+                </tr>
+                <tr id="Muzikalen">
+                    <td><i class="incl-ready"></i>Muzikalen</td>
+                    <td>A cipher made for Bulgarian that resembles musical notes.</td>
+                    <td><a class="projects-download-link" onclick="downloads({
+                        'PDF':'./projects/downloads/muzikalen/muzikalen.pdf',
+                        'HTML':'./projects/downloads/muzikalen/muzikalen.html',
+                        'Markdown':'./projects/downloads/muzikalen/muzikalen.md'
+                    }, true)">Download</a></td>
                 </tr>
             </tbody>
             </tbody>
