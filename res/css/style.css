@@ -6,7 +6,17 @@
     --col-2: rgb(172, 12, 12);
     --col-3: rgb(175, 143, 0);
     --col-4: rgb(0, 128, 0);
+    --col-links: blue;
+    --col-text: black;
     --transition-speed: 600ms;
+}
+
+body.darkTheme {
+    --col-bg: hsl(178, 80%, 8%);
+    --col-bg-dark: hsl(179, 38%, 18%);
+    --col-bg-darker: hsl(179, 29%, 35%);
+    --col-text: white;
+    --col-links: lightblue;
 }
 
 body {
@@ -109,6 +119,10 @@ nav li#logo a img {
         margin: 0px;
         width: 37px;
     }
+    nav ul li#themeLi {
+        margin-left: auto;
+        transform: translate(-100%, 0px);
+    }
     main {
         margin: 0px;
     }
@@ -131,9 +145,15 @@ nav li#logo a img {
     body::-webkit-scrollbar-track {
         background: var(--col-bg);
     }
+    nav ul {
+        height: 100%;
+        align-content: flex-start;
+    }
     nav ul li {
         width: 100%;
-        margin: auto;
+    }
+    nav ul li#themeLi {
+        margin-top: auto;
     }
     nav ul li:hover a {
         color: var(--col-1);
@@ -175,12 +195,20 @@ ul.contacts-ul div a {
     font-family: 'Lobster', cursive;
 }
 
-.content-paragraph {
+.content-paragraph, img{
     font-family: 'Dosis', sans-serif;
+}
+
+.content-paragraph:not(nav ul li a span), img{
+    color: var(--col-text);
 }
 
 main ul {
     list-style: square;
+}
+
+main ul li::marker {
+    color: var(--col-text);
 }
 
 table {
@@ -191,7 +219,7 @@ table {
 th,
 td {
     text-align: left;
-    border: 1px solid black;
+    border: 1px solid var(--col-text);
     border-collapse: collapse;
     padding: 8px;
     background-color: var(--col-bg-dark);
@@ -201,8 +229,8 @@ tr:nth-child(even) {
     background-color: var(--col-bg-darker);
 }
 
-a.projects-download-link {
-    color: blue;
+a {
+    color: var(--col-links);
     text-decoration: underline;
     cursor: pointer;
 }
