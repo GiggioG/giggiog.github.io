@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGL Links</title>
+    <style>
+        main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        img {
+            width:90vw;
+            max-width: 350px;
+        }
+
+        h1{
+            width: 100%;
+            text-align: center;
+        }
+
+        a#createLink {
+            position:fixed;
+            right: 0px;
+            bottom: 0px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1 id="title"></h1>
+    <main></main>
+    <a id="createLink" href="./create.html">Want a page like this?</a>
+    <script src="games.js"></script>
+    <script>
+        function main() {
+            const banners = document.querySelector("main");
+            const title = document.querySelector("h1#title");
+            let srch = location.search.replace("?", "");
+            srch = srch.split("&");
+
+            if(srch[0] == ''){srch = [];}
+
+            if(srch.length == 0){
+                document.write("Redirecting to creation page...");
+                setTimeout(()=>{location.href = "./create.html";}, 1500);
+                return;
+            }else if(srch.length == 1){
+                document.write("Error: query string must include username and questions.");
+                return;
+            }else if(srch.length == 2){
+                if(srch[1].length == 0){
+                    document.write("Error: there must be at least one question in query string.");
+                    return;
+                }
+                if(srch[1] == "@"){
+                    srch[1] = gamesString;
+                }
+                srch[1].split("").forEach(g=>{
+                    games[g].play = true;
+                });
+            }else{
+                document.write("Error: too many query string arguments.");
+                return;
+            }
+            
+            let usr = decodeURI(srch[0]);
+            document.title += ` for ${usr}`;
+            title.innerHTML = `${usr}'s NGL links`;
+            for (g in games) {
+                const game = games[g];
+                if (!game.play) { continue; }
+                let img = document.createElement("img");
+                img.src = game.banner;
+                let a = document.createElement("a");
+                a.appendChild(img);
+                a.href = game.url(usr);
+                banners.appendChild(a);
+            }
+        }
+        main();
+    </script>
+</body>
+
+</html>

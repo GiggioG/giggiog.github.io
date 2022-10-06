@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGL Link page generator</title>
+    <link rel="stylesheet" href="modals.css">
+    <style>
+        img.selection-banner {
+            max-width: 200px;
+            width: 50vw;
+            margin: 10px;
+        }
+
+        img.selection-banner:not(.selected) {
+            filter: grayscale(1) brightness(0.5);
+        }
+
+        div#games.disabled {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>NGL Link page generator</h1>
+        <input type="text" id="usr" placeholder="username">
+        <button id="submit">Submit</button>
+        <br>
+        <input type="checkbox" name="select_all" id="select_all">
+        <label for="select_all">Select all (including future ones)</label>
+        <br>
+        <div id="games">
+
+        </div>
+    </main>
+    <script src="modals.js"></script>
+    <script src="games.js"></script>
+    <script>
+        const username = document.querySelector("input#usr");
+        const submit = document.querySelector("button#submit");
+        const gamesDiv = document.querySelector("div#games");
+        const selectAll = document.querySelector("input#select_all");
+        let selectAllFlag = false;
+
+        let checkboxes = {};
+        gamesString.split("").forEach(g => { checkboxes[g] = false; });
+
+        gamesString.split("").forEach(g => {
+            let game = document.createElement("img");
+            game.src = games[g].banner;
+            game.id = `checkbox_${g}`;
+            game.classList.add("selection-banner");
+            game.addEventListener("click", e => {
+                checkboxes[g] = !checkboxes[g];
+                e.target.classList.toggle("selected");
+            });
+            gamesDiv.appendChild(game);
+        });
+
+        selectAll.addEventListener("change", e => {
+            selectAllFlag = e.target.checked;
+            if (selectAllFlag) {
+                gamesDiv.classList.add("disabled");
+            } else {
+                gamesDiv.classList.remove("disabled");
+            }
+        });
+
+        let finalLink = "bullshit:link not ready yet";
+        function copyLink(lnk){
+            navigator.clipboard.writeText(lnk);
+            alert("Link copied.")
+        }
+
+        submit.addEventListener("click", () => {
+            let selectedGames = "";
+            if (selectAllFlag) {
+                selectedGames = "@";
+            } else {
+                selectedGames = Object.keys(checkboxes).filter(e => checkboxes[e]).join("");
+            }
+
+            if (username.value == "") {
+                alert("Error: You must put your username.");
+                return;
+            }
+            if (selectedGames.length == 0) {
+                alert("Error: You must select at least one question type.");
+                return;
+            }
+
+            let link = `.?${username.value}&${selectedGames}`;
+            finalLink = (new URL(link, document.baseURI)).href;
+            let { modalDiv, bkgDiv } = makeModal();
+            modalDiv.innerHTML = `
+                <h2 class="modal-h">Your link is ready!</h2>
+                <a href="${finalLink}" class="modal-a">${finalLink}</a>
+                <div class="modal-buttons">
+                    <button class="modal-button" onclick="copyLink(finalLink);">Copy Link</button>
+                    <button class="modal-button" onclick="removeModal();">Close</button>
+                </div>
+            `;
+        });
+
+    </script>
+</body>
+
+</html>
