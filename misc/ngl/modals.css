@@ -78,6 +78,11 @@ button.modal-button {
     margin: 0px;
 }
 
+.modal-text {
+    color: white;
+    text-align: center;
+}
+
 .modal-a {
     text-align: center;
 }
