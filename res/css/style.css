@@ -12,10 +12,14 @@
 }
 
 body.darkTheme {
-    --col-bg: hsl(178, 80%, 8%);
-    --col-bg-dark: hsl(179, 38%, 18%);
-    --col-bg-darker: hsl(179, 29%, 35%);
+    --col-bg: rgb(4, 37, 36);
+    --col-bg-dark: rgb(28, 63, 63);
+    --col-bg-darker: rgb(63, 115, 114);
     --col-text: white;
+    --col-1: rgb(85 80 215);
+    --col-2: rgb(243 83 83);
+    --col-3: rgb(255 223 82);
+    --col-4: rgb(128 255 128);
     --col-links: lightblue;
 }
 
