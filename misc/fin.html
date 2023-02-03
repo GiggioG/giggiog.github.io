@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIN</title>
+    <style>
+        h1,
+        h3 {
+            text-align: center;
+        }
+
+        main{
+            margin-left: 50%;
+            transform: translate(-50%, 0);
+            width: min-content;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>The FIN test</h1>
+    <h3>Test how fast you can type a basic for loop.</h3>
+    <main>
+        <textarea id="t" cols="28" rows="3" style="font-size: larger;"></textarea>
+    </main>
+    <script>
+        const t = document.querySelector("textarea#t");
+        const correct = "for(int i = 0; i < n; i++){\n\n}";
+        t.placeholder = correct;
+        let t1 = null, time = null;
+        function checkInput() {
+            return (t.value == correct);
+        }
+        t.oninput = () => {
+            if (t1 == null) {
+                t1 = Number(new Date());
+                return;
+            }
+            if (checkInput()) {
+                time = Number(new Date()) - t1;
+                let again = confirm(`${time / 1000} seconds. Try Again?`);
+                if (again) {
+                    t.value = "";
+                    t1 = null, time = null;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
