@@ -22,7 +22,7 @@ function switchTheme() {
         document.body.classList.add("darkTheme");
     }
 }
-document.querySelector("body").onload = () => {
+function initTheme(){
     document.querySelector("nav ul li a#theme").addEventListener("click", switchTheme);
     themeButton();
 }
