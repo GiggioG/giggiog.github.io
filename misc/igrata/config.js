@@ -1,0 +1,12 @@
+COLS = 8;
+ROWS = 5;
+BACKGROUND = "white";
+SYMBOL_WIDTH = 3;
+WINSTROKE_WIDTH = 15;
+X_COLOR = "blue";
+X_WINSTROKE_COLOR = "rgba(0, 0, 255, 0.3)";
+X_SCALE = 0.8;
+O_COLOR = "red";
+O_WINSTROKE_COLOR = "rgba(255, 0, 0, 0.3)";
+O_SCALE = 0.7;
+LOCALSTORAGE_PREVFIRST_KEY = "igrata_prevFirstPlayer";
