@@ -9,6 +9,7 @@ let board = [];
 for (let i = 0; i < ROWS; i++) {
     board.push(".".repeat(COLS).split(""));
 }
+let lastMove = null;
 
 /// logik
 let turn = new URLSearchParams(location.search).get("first");
@@ -56,6 +57,7 @@ function handleClick(event) {
         if (board[r + 1][c] == '.') { return; }
     }
     board[r][c] = turn;
+    lastMove = {r, c};
     checkWin();
     if (turn == 'X') { turn = 'O'; }
     else if (turn == 'O') { turn = 'X'; }
@@ -93,10 +95,17 @@ function drawAtCoords(r, c, symbol) {
         ctx.beginPath();
         ctx.arc(x + cellDim / 2, y + cellDim / 2, r, 0, 2 * Math.PI);
         ctx.stroke();
+    }else if(symbol == 'H'){ // highlight {
+        let sym = board[r][c];
+        ctx.fillStyle = (sym=='X'?X_HIGHLIGHT_COLOR:O_HIGHLIGHT_COLOR);
+        ctx.fillRect(x, y, cellDim, cellDim);
     }
 }
 function drawBoard() {
     clearCanvas();
+    if(lastMove != null){
+        drawAtCoords(lastMove.r, lastMove.c, 'H');
+    }
     ctx.strokeStyle = "grey";
     ctx.lineCap = "round";
     ctx.lineWidth = 1;
