@@ -12,8 +12,9 @@ for (let i = 0; i < ROWS; i++) {
 let lastMove = null;
 
 /// logik
-let turn = new URLSearchParams(location.search).get("first");
-if(turn == null){ turn = 'X';}
+let firstTurn = new URLSearchParams(location.search).get("first");
+if(firstTurn == null){ firstTurn = 'X';}
+let turn = firstTurn;
 let win = null;
 let winPaths = [];
 function getCursorPosition(event) {
@@ -47,11 +48,17 @@ function checkWin() {
             }
         }
     }
+    if(win == null){
+        if(!board.map(e=>e.join('')).join('').includes('.')){
+            win = 'T';
+        }
+    }
 }
 function handleClick(event) {
     const { x, y } = getCursorPosition(event);
     const r = Math.floor(y / cellDim);
     const c = Math.floor(x / cellDim);
+    if(win != null){ return; }
     if (board[r][c] != '.') { return; }
     if (r < ROWS - 1) {
         if (board[r + 1][c] == '.') { return; }
@@ -141,9 +148,16 @@ function drawBoard() {
 
 function draw() {
     drawBoard();
-    if (win != null) {
+    if (win == 'O' || win == 'X') {
         document.querySelector("h1#message").innerHTML = `${win} WON!!!`;
         document.querySelector("h1#message").style.color = (win=='X'?X_COLOR:O_COLOR);
+        document.querySelector("button#playAgain").style.color = (turn=='X'?X_COLOR:O_COLOR);
+        document.querySelector("button#playAgain").style.filter = "";
+        document.querySelector("button#playAgain").disabled = false;
+    }else if(win == 'T'){
+        document.querySelector("h1#message").innerHTML = `The game ended in a tie.`;
+        document.querySelector("h1#message").style.color = "";
+        turn = firstTurn;
         document.querySelector("button#playAgain").style.color = (turn=='X'?X_COLOR:O_COLOR);
         document.querySelector("button#playAgain").style.filter = "";
         document.querySelector("button#playAgain").disabled = false;
