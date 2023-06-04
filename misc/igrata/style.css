@@ -12,6 +12,10 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+canvas {
+    align-self: center;
+}
+
 h1#message { 
     text-align: center;
 }

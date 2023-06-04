@@ -1,8 +1,15 @@
 /// vars
 let ctx = document.querySelector("canvas").getContext("2d");
-let width = (ctx.canvas.width = window.innerWidth);
-let cellDim = width / COLS;
+let winW = window.innerWidth;
+let winH = (window.innerHeight
+    - document.querySelector("h1#message").offsetHeight
+    - document.querySelector("button#playAgain").offsetHeight
+    - 50);
+let cellDim = min(winH/ROWS, winW/COLS);
+let width = (ctx.canvas.width = cellDim * COLS);
 let height = (ctx.canvas.height = cellDim * ROWS);
+ctx.canvas.style.height = `${height}px`;
+ctx.canvas.style.width = `${width}px`;
 
 /// init board
 let board = [];
