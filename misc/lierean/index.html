@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lierean</title>
+    <script>
+        const bulgarianLetters = {
+            'а': {
+                "bg": 'а',
+                "letter": "a",
+                "affix": "q"
+            },
+            'б': {
+                "bg": 'б',
+                "letter": "d",
+                "affix": "q"
+            },
+            'в': {
+                "bg": 'в',
+                "letter": "D",
+                "affix": "qà"
+            },
+            'г': {
+                "bg": 'г',
+                "letter": "d",
+                "affix": "Q"
+            },
+            'д': {
+                "bg": 'д',
+                "letter": "d",
+                "affix": "k"
+            },
+            'е': {
+                "bg": 'е',
+                "letter": "xì",
+                "affix": "q"
+            },
+            'ж': {
+                "bg": 'ж',
+                "letter": "z",
+                "affix": "K"
+            },
+            'з': {
+                "bg": 'з',
+                "letter": "z",
+                "affix": "k"
+            },
+            'и': {
+                "bg": 'и',
+                "letter": "xâ",
+                "affix": "q"
+            },
+            'й': {
+                "bg": 'й',
+                "letter": "R",
+                "affix": "Qè"
+            },
+            'к': {
+                "bg": 'к',
+                "letter": "t",
+                "affix": "Q"
+            },
+            'л': {
+                "bg": 'л',
+                "letter": "l",
+                "affix": "k"
+            },
+            'м': {
+                "bg": 'м',
+                "letter": "n",
+                "affix": "q"
+            },
+            'н': {
+                "bg": 'н',
+                "letter": "n",
+                "affix": "k"
+            },
+            'о': {
+                "bg": 'о',
+                "letter": "xì=",
+                "affix": "Q"
+            },
+            'п': {
+                "bg": 'п',
+                "letter": "t",
+                "affix": "q"
+            },
+            'р': {
+                "bg": 'р',
+                "letter": "rà",
+                "affix": "k"
+            },
+            'с': {
+                "bg": 'с',
+                "letter": "s",
+                "affix": "k"
+            },
+            'т': {
+                "bg": 'т',
+                "letter": "t",
+                "affix": "k"
+            },
+            'у': {
+                "bg": 'у',
+                "letter": "xâ=",
+                "affix": "Q"
+            },
+            'ф': {
+                "bg": 'ф',
+                "letter": "àT",
+                "affix": "q"
+            },
+            'х': {
+                "bg": 'х',
+                "letter": "T",
+                "affix": "Q"
+            },
+            'ш': {
+                "bg": 'ш',
+                "letter": "T",
+                "affix": "K"
+            },
+            'ъ': {
+                "bg": 'ъ',
+                "letter": "xò",
+                "affix": "Q"
+            },
+            '0': {
+                "bg": '0',
+                "letter": "0",
+                "affix": ""
+            },
+            '1': {
+                "bg": '1',
+                "letter": "1",
+                "affix": ""
+            },
+            '2': {
+                "bg": '2',
+                "letter": "2",
+                "affix": ""
+            },
+            '3': {
+                "bg": '3',
+                "letter": "3",
+                "affix": ""
+            },
+            '4': {
+                "bg": '4',
+                "letter": "4",
+                "affix": ""
+            },
+            '5': {
+                "bg": '5',
+                "letter": "5",
+                "affix": "`"
+            },
+            '6': {
+                "bg": '6',
+                "letter": "6",
+                "affix": "`"
+            },
+            '7': {
+                "bg": '7',
+                "letter": "7",
+                "affix": "`"
+            },
+            '8': {
+                "bg": '8',
+                "letter": "8",
+                "affix": "`"
+            },
+            '9': {
+                "bg": '9',
+                "letter": "9",
+                "affix": "`"
+            },
+        };
+        const liereanAffixes = {
+            "q": "prefix",
+            "qà": "prefix",
+            "Q": "suffix",
+            "k": "prefix",
+            "K": "suffix",
+            "Qè": "suffix",
+            "": "prefix",
+            "`": "prefix"
+        };
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Lierean';
+            src: url("Lierean Script.ttf") format("truetype");
+        }
+
+        input#ipt {
+            width: 95vw;
+        }
+
+        h1#opt {
+            font-weight: 100;
+            font-size: xx-large;
+            font-family: 'Lierean'
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bulgarian to Lierean (<a href="https://giggiog.github.io/wsid">WSID</a> 33)</h1>
+    <input id="ipt" type="text" placeholder="Български">
+    <h1 id="opt"></h1>
+
+    <script>
+        const ipt = document.querySelector("input#ipt");
+        const opt = document.querySelector("h1#opt");
+
+        ipt.addEventListener("input", () => {
+            opt.innerHTML = convert(ipt.value);
+        })
+
+        function convert(bulg) {
+            let words = bulg.split(' ').map(w => w.toLowerCase());
+            words = words.map(removeCombined);
+            words = words.map(convertWord);
+            return words.join("  ");
+        }
+
+        function removeCombined(word) {
+            word = word.replaceAll('ц', "тс");
+            word = word.replaceAll('ч', "тш");
+            word = word.replaceAll('щ', "шт");
+            word = word.replaceAll('ь', "й");
+            word = word.replaceAll('ю', "йу");
+            word = word.replaceAll('я', "йа");
+            return word;
+        }
+
+        function convertWord(word) {
+            let letters = word.split('').map(l => {
+                if (bulgarianLetters[l]) { return bulgarianLetters[l]; }
+                return {
+                    bg: l,
+                    letter: l,
+                    affix: ''
+                };
+            });
+            let spans = [];
+
+            let curr = null;
+            let currArr = [];
+            for (let i = 0; i < letters.length; i++) {
+                if (letters[i].affix != curr) {
+                    spans.push({ letters: currArr, affix: curr });
+                    currArr = [letters[i]];
+                    curr = letters[i].affix;
+                } else {
+                    currArr.push(letters[i]);
+                }
+            }
+            spans.push({ letters: currArr, affix: curr });
+
+            spans.splice(0, 1);
+
+            spans = spans.map((s, idx, arr) => {
+                let lettString = s.letters.map(e => e.letter);
+                let aff = s.affix;
+                if (idx > 0 && liereanAffixes[arr[idx - 1].affix] == "prefix" && liereanAffixes[aff] == "suffix" && lettString.length > 1) {
+                    lettString.splice(1, 0, s.affix);
+                }
+                if(aff == 'k' && ((idx > 0 && liereanAffixes[arr[idx - 1].affix] == "suffix") || idx == 0)){
+                    aff = '';
+                }
+                lettString = lettString.join('');
+                if (liereanAffixes[aff] == "prefix") {
+                    return aff + lettString;
+                } else {
+                    return lettString + aff;
+                }
+            });
+
+            return spans.join('');
+        }
+    </script>
+</body>
+
+</html>
