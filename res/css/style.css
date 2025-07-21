@@ -215,9 +215,13 @@ main ul li::marker {
     color: var(--col-text);
 }
 
-table {
+table{
     border-collapse: collapse;
     width: 100%;
+}
+
+table#stl-table {
+    width: min-content;
 }
 
 th,
@@ -229,7 +233,7 @@ td {
     background-color: var(--col-bg-dark);
 }
 
-tr:nth-child(even) {
+tr:nth-child(odd) th, tr:nth-child(even) td {
     background-color: var(--col-bg-darker);
 }
 

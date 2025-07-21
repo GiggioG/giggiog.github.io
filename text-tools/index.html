@@ -16,7 +16,7 @@
 
 <body>
     <i class="incl-navbar"></i>
-    <main>
+    <main class="content-paragraph">
         <h1 class="primary-text">Text tools</h1>
         <ul>
             <li>
@@ -45,6 +45,87 @@
                 <input type="text" id="roman-ipt" placeholder="Enter roman numeral here...">
                 <button id="roman-btn">Convert</button>
                 <p class="content-paragraph" id="roman-res"></p>
+            </li>
+            <li>
+                <h2 class="secondary-text">C++ STL shortened typedef parser</h2>
+                <p class="content-paragraph">
+                    A parser I wrote, that converts C++ STL short typedefs to their full names.<br>
+                    Like vvpipii to std::vector&lt;std::vector&lt;std::pair&lt;int, std::pair&lt;int, int&gt;&gt;&gt;.
+                    Here is a list of the supported types:
+                <table id="stl-table">
+                    <thead>
+                        <tr>
+                            <th>Full</th>
+                            <th>Short</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>int</td>
+                            <td>i</td>
+                        </tr>
+                        <tr>
+                            <td>bool</td>
+                            <td>b</td>
+                        </tr>
+                        <tr>
+                            <td>char</td>
+                            <td>c</td>
+                        </tr>
+                        <tr>
+                            <td>long long</td>
+                            <td>l</td>
+                        </tr>
+                        <tr>
+                            <td>unsigned int</td>
+                            <td>u</td>
+                        </tr>
+                        <tr>
+                            <td>unsigned long long</td>
+                            <td>U</td>
+                        </tr>
+                        <tr>
+                            <td>std::vector</td>
+                            <td>v</td>
+                        </tr>
+                        <tr>
+                            <td>std::queue</td>
+                            <td>q</td>
+                        </tr>
+                        <tr>
+                            <td>std::priority_queue</td>
+                            <td>Q</td>
+                        </tr>
+                        <tr>
+                            <td>std::unordered_map</td>
+                            <td>m</td>
+                        </tr>
+                        <tr>
+                            <td>std::map</td>
+                            <td>M</td>
+                        </tr>
+                        <tr>
+                            <td>std::string</td>
+                            <td>z</td>
+                        </tr>
+                        <tr>
+                            <td>std::pair</td>
+                            <td>p</td>
+                        </tr>
+                        <tr>
+                            <td>std::unordered_set</td>
+                            <td>s</td>
+                        </tr>
+                        <tr>
+                            <td>std::set</td>
+                            <td>S</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </p>
+                <input type="text" id="stl-ipt" placeholder="Enter STL shortened typedef here...">
+                <button id="stl-btn">Convert</button>
+                <p class="content-paragraph" id="stl-res"></p>
             </li>
         </ul>
     </main>
@@ -139,6 +220,86 @@
             opt.innerText = sum;
         }
 
+        const stl_codes = {
+            'i': {
+                count: 0,
+                full: "int"
+            },
+            'v': {
+                count: 1,
+                full: "std::vector"
+            },
+            'b': {
+                count: 0,
+                full: "bool"
+            },
+            'q': {
+                count: 1,
+                full: "std::queue"
+            },
+            'Q': {
+                count: 1,
+                full: "std::priority_queue"
+            },
+            'm': {
+                count: 2,
+                full: "std::unordered_map"
+            },
+            'M': {
+                count: 2,
+                full: "std::map"
+            },
+            'z': {
+                count: 0,
+                full: "std::string"
+            },
+            'c': {
+                count: 0,
+                full: "char"
+            },
+            'p': {
+                count: 2,
+                full: "std::pair"
+            },
+            's': {
+                count: 1,
+                full: "std::unordered_set"
+            },
+            'S': {
+                count: 1,
+                full: "std::set"
+            },
+            'l': {
+                count: 0,
+                full: "long long"
+            },
+            'u': {
+                count: 0,
+                full: "unsigned int"
+            },
+            'U': {
+                count: 0,
+                full: "unsigned long long"
+            }
+        };
+        function stl_expand(short, startFrom = 0) {
+            let next = startFrom;
+            const code = stl_codes[short[next++]];
+            if(code.count == 0){ return {parsed: code.full, nextIdx: next}; }
+            let parameters = [];
+            for(let i = 0; i < code.count; i++){
+                let {parsed, nextIdx} = stl_expand(short, next);
+                next = nextIdx;
+                parameters.push(parsed);
+            }
+            const ret = {parsed: `${code.full}&lt;${parameters.join(", ")}&gt;`, nextIdx: next};
+            if(startFrom == 0){
+                document.querySelector("#stl-res").innerHTML = ret.parsed;
+                return;
+            }
+            return ret;
+        }
+
         document.querySelector("#shliokavitsa-btn").addEventListener("click", _ => {
             document.querySelector("#shliokavitsa-res").innerHTML = "";
             shliokavitsa(document.querySelector("#shliokavitsa-ipt").value);
@@ -150,6 +311,10 @@
         document.querySelector("#roman-btn").addEventListener("click", _ => {
             document.querySelector("#roman-res").innerHTML = "";
             roman(document.querySelector("#roman-ipt").value);
+        });
+        document.querySelector("#stl-btn").addEventListener("click", _ => {
+            document.querySelector("#stl-res").innerHTML = "";
+            stl_expand(document.querySelector("#stl-ipt").value);
         });
     </script>
 </body>
